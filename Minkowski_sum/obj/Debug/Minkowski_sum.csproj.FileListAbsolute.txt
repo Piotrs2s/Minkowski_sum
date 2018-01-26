@@ -1,0 +1,20 @@
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.exe.config
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.exe
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.pdb
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csprojResolveAssemblyReference.cache
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.Form1.resources
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.Properties.Resources.resources
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csproj.GenerateResource.Cache
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csproj.CoreCompileInputs.cache
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.exe
+C:\Users\Piotrek\source\repos\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.pdb
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.exe.config
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.exe
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\bin\Debug\Minkowski_sum.pdb
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csprojResolveAssemblyReference.cache
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.Form1.resources
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.Properties.Resources.resources
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csproj.GenerateResource.Cache
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.csproj.CoreCompileInputs.cache
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.exe
+C:\Users\Piotrek\Studia\Geometria Obliczeniowa\Minkowski_sum\Minkowski_sum\obj\Debug\Minkowski_sum.pdb
