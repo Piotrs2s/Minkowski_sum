@@ -12,11 +12,17 @@ namespace Minkowski_sum
 {
     public partial class Form1 : Form
     {
+
         Graphics Graphics;
         Random rand;
+
+        //Obstacle color
         Brush Redbrush;
-        Brush Blackbrush;
-        Pen pen;
+
+        //Lines pen
+        Pen BlackPen;
+
+        //List of obstacles vertices points
         List<PointF[]> Obstacles;
 
         public Form1()
@@ -26,33 +32,50 @@ namespace Minkowski_sum
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        ////Generte obstacles button
+        private void obstaclesButton_Click(object sender, EventArgs e)
         {
             Graphics.Clear(Color.White);
             rand = new Random();
             Redbrush = new SolidBrush(Color.Red);
-            Blackbrush = new SolidBrush(Color.Black);
-            pen = new Pen(Color.Black);
+            BlackPen = new Pen(Color.Black);
             Obstacles = new List<PointF[]>();
 
             GenerateObstacles();
-            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void generateButton_Click(object sender, EventArgs e)
         {
             Minkowski();
         }
 
         private void GenerateObstacles()
         {
-            //Normal
-            int quantity = Int32.Parse(textBox1.Text);  
-            //int quantity = rand.Next(2, 6);
-            int size = Int32.Parse(textBox2.Text); ;
 
+            //Check user input
+            int retNum;
+            if (string.IsNullOrEmpty(quantityTextBox.Text) || string.IsNullOrEmpty(sizeTextBox.Text))
+            {
+                MessageBox.Show("No input","Error");
+                return;
+            }
+            if (!int.TryParse(quantityTextBox.Text, out retNum) || !int.TryParse(sizeTextBox.Text, out retNum))
+            {
+                MessageBox.Show("Wrong input format", "Error");
+                return;
+            }
+
+            //Quantity of obstacles
+            int quantity = Int32.Parse(quantityTextBox.Text);  
+
+            //Size of obstacles
+            int size = Int32.Parse(sizeTextBox.Text); ;
+
+            //Create obstacle in random place
             for (int i = 0; i < quantity; i++)
             {
+                // a, b, c, d - obstacle vertices
                 PointF[] Obstacle = new PointF[4];
                 PointF a = new PointF(rand.Next(0, pictureBox1.Size.Width-size), rand.Next(0, pictureBox1.Size.Height-size));
                 PointF b = new PointF(a.X + size, a.Y);
@@ -66,11 +89,15 @@ namespace Minkowski_sum
 
                 Obstacles.Add(Obstacle);
 
+                //Draw obstacle
                 Rectangle Obst = new Rectangle(Convert.ToInt32(a.X), Convert.ToInt32(a.Y), size, size);
                 Graphics.FillRectangle(Redbrush, Obst);
             }
         }
 
+
+        
+        //Generate shells for obstacles using Minkowski addition
         private void Minkowski()
         {
             List<PointF>[] ObstaclesShellPoints = new List<PointF>[Obstacles.Count];
@@ -78,43 +105,31 @@ namespace Minkowski_sum
 
             for (int i = 0; i < Obstacles.Count; i++)
             {
-                /*ObstaclesShellPoints[i] =*/ GeneratePoints(Obstacles[i]);
+                GeneratePoints(Obstacles[i]);
             }
-            #region  
-            //Draw Points
-            //for (int i = 0; i < ObstaclesShellPoints.Length; i++)
-            //{
-            //    foreach (var point in ObstaclesShellPoints[i])
-            //    {
-            //        Graphics.FillEllipse(Blackbrush, point.X, point.Y, 2, 2);
-            //    }
-            //}
-            #endregion
+            
         }
 
-        private/* List<PointF>*/ void GeneratePoints(PointF[] obstacle)
+        private void GeneratePoints(PointF[] obstacle)
         {
+
             List<PointF> ShellPoints = new List<PointF>();
             List<PointF> ShellPointsToDelete = new List<PointF>();
 
-            //Triangle Coordinates
+            //Start (Robot) Coordinates 
             PointF t1 = new PointF(-3, 3);
             PointF t2 = new PointF(3, 3);
             PointF t3 = new PointF(0, -6);
-
-            //good triangle
-            //PointF t1 = new PointF(-1, 1.29f);
-            //PointF t2 = new PointF(1, 1.29f);
-            //PointF t3 = new PointF(0, -2.58f);
-
+            
 
             for (int i = 0; i < obstacle.Length; i++)
             {
-                //ShellPoints for each vertice
+                // create shell points for each vertice of obstacle
                 PointF Sp1 = new PointF(obstacle[i].X + t1.X, obstacle[i].Y + t1.Y);
                 PointF Sp2 = new PointF(obstacle[i].X + t2.X, obstacle[i].Y + t2.Y);
                 PointF Sp3 = new PointF(obstacle[i].X + t3.X, obstacle[i].Y + t3.Y);
 
+                //Add shell points in correct order (for drawing)
                 switch (i)
                 {
                     case 0:
@@ -144,6 +159,7 @@ namespace Minkowski_sum
                 }
             }
 
+            //Find points of shell that are overlap obstacle or aren't part of the shell 
             foreach (var point in ShellPoints)
             {
 
@@ -159,6 +175,7 @@ namespace Minkowski_sum
 
             }
 
+            //Detele points of shell that are overlap obstacle or aren't part of the shell (they are not external)
             foreach (var point in ShellPointsToDelete)
             {
                 for (int i = 0; i < ShellPoints.Count; i++)
@@ -170,15 +187,16 @@ namespace Minkowski_sum
                 }
             }
 
-            //Draw Lines
+            //Draw shells
             PointF[] PointsToDraw = ShellPoints.ToArray();
 
-            Graphics.DrawLines(pen, PointsToDraw);
-            Graphics.DrawLine(pen, PointsToDraw[0], PointsToDraw[PointsToDraw.Length-1]);
+            Graphics.DrawLines(BlackPen, PointsToDraw);
+            Graphics.DrawLine(BlackPen, PointsToDraw[0], PointsToDraw[PointsToDraw.Length-1]);
 
             //return ShellPoints;
         }
 
+        //Check if point belongs to shell 
         private bool CheckPointIsPart(PointF point, PointF[] obstacle)
         {
             if (IsPart(point, obstacle[0], obstacle[1]) == 1 || IsPart(point, obstacle[1], obstacle[2]) == 1 || IsPart(point, obstacle[2], obstacle[3]) == 1
@@ -192,6 +210,7 @@ namespace Minkowski_sum
             }
         }
 
+        //Check if point overlap figure
         private bool CheckPointIsCrossing(PointF point, PointF[] obstacle)
         {
             PointF helpPoint = new PointF(point.X + 300, point.Y);
@@ -226,7 +245,7 @@ namespace Minkowski_sum
         }
 
       
-        
+        //Check if point a is between points b and c
         private int IsPart(PointF a, PointF b, PointF c)
         {
             float det = Det(a,b,c);
@@ -242,20 +261,19 @@ namespace Minkowski_sum
             return 0;
         }
 
-       
+       //Check if lines a-b and p-r are crossing
         private bool IsCrossing(PointF a, PointF b, PointF p, PointF r)
-        {
-          
-
-
+        {         
             return (Math.Sign(Det(p, r, a)) != Math.Sign(Det(p, r, b))) &&
                    (Math.Sign(Det(a, b, p)) != Math.Sign(Det(a, b, r)));
         }
 
+        //Determinant of matrix
         private static float Det(PointF a, PointF b, PointF c)
         {
             return (a.X * c.Y + b.Y * c.X + b.X * a.Y - c.X * a.Y - a.X * b.Y - b.X * c.Y);
         }
 
+       
     }
 }

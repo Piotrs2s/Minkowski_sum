@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.obstaclesButton = new System.Windows.Forms.Button();
+            this.generateButton = new System.Windows.Forms.Button();
+            this.quantityTextBox = new System.Windows.Forms.TextBox();
+            this.sizeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -40,76 +40,84 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(91, 33);
+            this.pictureBox1.Location = new System.Drawing.Point(121, 41);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.Size = new System.Drawing.Size(400, 369);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // obstaclesButton
             // 
-            this.button1.Location = new System.Drawing.Point(275, 358);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Obstacles";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.obstaclesButton.Location = new System.Drawing.Point(395, 434);
+            this.obstaclesButton.Margin = new System.Windows.Forms.Padding(4);
+            this.obstaclesButton.Name = "obstaclesButton";
+            this.obstaclesButton.Size = new System.Drawing.Size(126, 28);
+            this.obstaclesButton.TabIndex = 1;
+            this.obstaclesButton.Text = "Obstacles";
+            this.obstaclesButton.UseVisualStyleBackColor = true;
+            this.obstaclesButton.Click += new System.EventHandler(this.obstaclesButton_Click);
             // 
-            // button2
+            // generateButton
             // 
-            this.button2.Location = new System.Drawing.Point(275, 387);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Generate";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.generateButton.Location = new System.Drawing.Point(395, 469);
+            this.generateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.generateButton.Name = "generateButton";
+            this.generateButton.Size = new System.Drawing.Size(126, 28);
+            this.generateButton.TabIndex = 2;
+            this.generateButton.Text = "Generate shell";
+            this.generateButton.UseVisualStyleBackColor = true;
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
-            // textBox1
+            // quantityTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(370, 361);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(36, 20);
-            this.textBox1.TabIndex = 3;
+            this.quantityTextBox.Location = new System.Drawing.Point(165, 455);
+            this.quantityTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.quantityTextBox.Name = "quantityTextBox";
+            this.quantityTextBox.Size = new System.Drawing.Size(47, 22);
+            this.quantityTextBox.TabIndex = 3;
             // 
-            // textBox2
+            // sizeTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(412, 361);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(27, 20);
-            this.textBox2.TabIndex = 4;
+            this.sizeTextBox.Location = new System.Drawing.Point(294, 455);
+            this.sizeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sizeTextBox.Name = "sizeTextBox";
+            this.sizeTextBox.Size = new System.Drawing.Size(35, 22);
+            this.sizeTextBox.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(367, 345);
+            this.label1.Location = new System.Drawing.Point(132, 434);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(125, 17);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Quantity";
+            this.label1.Text = "Obstacles quantity";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(412, 345);
+            this.label2.Location = new System.Drawing.Point(265, 434);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(102, 17);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Size";
+            this.label2.Text = "Obstacles Size";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 422);
+            this.ClientSize = new System.Drawing.Size(651, 519);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.sizeTextBox);
+            this.Controls.Add(this.quantityTextBox);
+            this.Controls.Add(this.generateButton);
+            this.Controls.Add(this.obstaclesButton);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -121,10 +129,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button obstaclesButton;
+        private System.Windows.Forms.Button generateButton;
+        private System.Windows.Forms.TextBox quantityTextBox;
+        private System.Windows.Forms.TextBox sizeTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
